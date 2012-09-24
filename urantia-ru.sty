@@ -1,0 +1,114 @@
+\NeedsTeXFormat{LaTeX2e}[2000/06/01]
+\ProvidesPackage{urantia-ru}[2010/06/19 v1.0]
+\RequirePackage[parvs,nomarnvs,nogeometry,lettrine,vssup,nofnpara]{bible}
+\RequirePackage{xltxtra,polyglossia,hyphenat}
+%\tunemarkuptag{pgafour}
+%\tunemarkuptag{pgletter}
+%\tunemarkuptag{pgluluhb}
+\tunemarkuptag{pghanlin}
+\setdefaultlanguage{russian}
+\def\urantiaparttitlefont{Minion Pro}
+\def\urantiamainfont{Minion Pro}
+\def\urantiatitlefont{Minion Pro}
+\def\urantiaheaderfont{Minion Pro}
+\def\urantiaheadingfont{Minion Pro}
+\def\urantiaheaderackfont{Minion Pro}
+\def\urantiaexplfont{Minion Pro}
+\input tex/urantia-core.tex
+\input tex/urantia-hyphen-ru.tex
+
+%\renewcommand{\DefaultLoversize}{0.118}
+
+\DeclareTextAccent{\'}{EU1}{180}
+
+\AtBeginDocument{%
+\hypersetup{%
+  pdftitle={Kniga Urantia},%
+  pdfauthor={Urantia Book Society of Greater New York - http://www.urantia.info},%
+  pdfcreator={XeLaTeX of TeX Live 2008},%
+  pdfsubject={Kniga Urantia},%
+  pdfkeywords={urantia,fifth,epochal,revelation,jesus,michael},%
+  pdflang={Russian},%
+  pdfcreationdate={D:20100619195552Z},%
+  pdfmoddate={D:\pdfdate-00'00'}%
+}%
+}
+
+\tunemarkup{pgluluhb}{%
+\renewcommand{\bibtocheadfont}{\fontsize{13}{13}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{13}{17}\selectfont}
+}
+
+\tunemarkup{pgletter}{%
+\renewcommand{\bibtocheadfont}{\fontsize{12}{12}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{10}{11}\selectfont}
+}
+
+\tunemarkup{pgafour}{%
+\renewcommand{\bibtocheadfont}{\fontsize{12}{12}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{10}{12}\selectfont}
+}
+
+\tunemarkup{pghanlin}{%
+\renewcommand{\bibtocsuperheadfont}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibtocheadfont}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{8.7}{9.3}\selectfont}
+\renewcommand{\bibheadfont}{\fontsize{6.5}{6.5}\selectfont}
+\renewcommand{\bibheadpapersize}{\fontsize{9.0}{10}\selectfont}
+\renewcommand{\bibheadchapsize}{\fontsize{8.7}{10}\selectfont}
+\renewcommand{\bibheadversesize}{\fontsize{8.0}{10}\selectfont}
+\renewcommand{\bibheadpagesize}{\fontsize{9.0}{10}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{15}{17}\selectfont}
+\renewcommand{\urantiamainfontsize}{15/17}
+}
+
+\renewcommand{\headersizeadjusthanlin}[1]{%
+\ifnum #1=19
+   \fontsize{6.0}{6.0}\selectfont
+\fi
+\ifnum #1=107
+   \fontsize{6.2}{6.2}\selectfont
+\fi
+\ifnum #1=109
+   \fontsize{6.1}{6.1}\selectfont
+\fi
+\ifnum #1=112
+   \fontsize{5.3}{5.3}\selectfont
+\fi
+\ifnum #1=118
+   \fontsize{6.21}{6.21}\selectfont
+\fi
+\ifnum #1=146
+   \fontsize{6.21}{6.21}\selectfont
+\fi
+\ifnum #1=181
+   \fontsize{5.8}{5.8}\selectfont
+\fi
+}
+
+\renewcommand{\bibpage}{Стр.}
+\def\ackn{Заключительные замечания}
+\def\forewordup{ПРЕДИСЛОВИЕ}
+\def\forewordtoc{Предисловие}
+\def\forewordbmk{Предисловие}
+\def\forewordhdr{предисловие}
+\def\urantiabook{КНИГА УРАНТИЯ}
+\def\introtxt{Введение}
+\def\papertxt{ТЕКСТ}
+\def\partitxt{ЧАСТЬ I}
+\def\partiup{ЦЕНТРАЛЬНАЯ ВСЕЛЕННАЯ И СВЕРХВСЕЛЕННЫЕ}
+\def\partimix{Центральная Вселенная и Сверхвселенные}
+\def\partisub{Представленно при содействии отряда личностей сверхвселенной, находящихся на Уверсе, дейсвующего под руководством\\Древних Дней Орвонтона.}
+\def\partiitxt{ЧАСТЬ II}
+\def\partiiup{ЛОКАЛЬНАЯ ВСЕЛЕННАЯ}
+\def\partiimix{Локальная Вселенная}
+\def\partiisub{Под покровительством Небадонского Отряда Личностей Локальной Вселенной, действующих на основе полномочий от Гавриила из Спасограда.}
+\def\partiiitxt{ЧАСТЬ III}
+\def\partiiiup{ИСТОРИЯ УРАНТИИ}
+\def\partiiimix{История Урантии}
+\def\partiiisub{Материалы этой части подготовлены Отрядом Личностей локальной вселенной, действующих по распоряжению Гавриила из Спасограда.}
+\def\partivtxt{ЧАСТЬ IV}
+\def\partivup{ЖИЗНЬ И УЧЕНИЯ ИИСУСА}
+\def\partivmix{Жизнь и Учения Иисуса}
+\def\partivsubone{Материалы этой части подготовлены комиссией из 12 срединников Урантии, работавшей под началом Мелхиседека,\\руководителя комиссии по откровениям.}
+\def\partivsubtwo{Основные данные о событиях сообщены срединником второго рода, который некогда был назначен надчеловеческим хранителем\\апостола Андрея.}

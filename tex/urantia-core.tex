@@ -1,0 +1,680 @@
+% Amazon Kindle DX
+\tunemarkup{pgkindledx}{\RequirePackage[dvips,headheight=30pt,headsep=7pt,vmargin={0.27in,0.2in},hmargin={0.03in,0.07in},twoside=false,papersize={140mm,203mm}]{geometry}}
+
+% A4 for printed PDF to fit in 2x740 pages
+\tunemarkup{pgafour}{\RequirePackage[dvips,headheight=20pt,headsep=7pt,vmargin={0.57in,0.5in},hmargin={0.9in,0.5in},twoside=true,a4paper]{geometry}}
+
+% A4 COMPACT for printed PDF to fit in 740 pages
+\tunemarkup{pgaf}{\RequirePackage[dvips,headheight=10.2pt,headsep=0pt,vmargin={0.4in},hmargin={0.7in,0.4in},twoside=true,a4paper]{geometry}}
+
+% US letter for printed PDF to fit into 2x800 pages
+\tunemarkup{pgletter}{\RequirePackage[dvips,headheight=17pt,headsep=5pt,vmargin={0.57in,0.5in},hmargin={0.9in,0.5in},twoside=true,papersize={8.25in,10.75in}]{geometry}}
+
+% 6x9" to fit 4x800 pages.
+\tunemarkup{pgluluhb}{\RequirePackage[dvips,headheight=20pt,headsep=7pt,vmargin={0.6in,0.5in},hmargin={0.8in,0.7in},twoside=true,papersize={6in,9in}]{geometry}}
+
+\tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=17pt,headsep=3pt,vmargin={0.18in,0.1in},hmargin={0.07in},twoside=false,papersize={90.0mm,120.0mm}]{geometry}}
+
+% fix page dimentions in xelatex - can be dropped when geometry.sty
+% will become xetex-aware and/or geometry.cfg in texlive will be fixed
+\@ifundefined{XeTeXversion}{}{\def\Gm@checkdrivers{\Gm@setdriver{pdftex}}}
+
+% for typesetting fractions: 1/2, 1/6, etc.
+\newcommand{\bibfrac}[2]{{\addfontfeature{Fractions=On}#1/#2}}
+
+% allow inter-paragraph space to grow
+\setlength{\parskip}{2pt plus 5pt minus 2pt}
+
+\setmainfont[WordSpace={1.2,2.5,1.0},Mapping=tex-text]{\urantiamainfont}
+\newfontfamily\titlefont[Letters=Uppercase,LetterSpace=1.0,WordSpace=2.0,Mapping=tex-text]{\urantiatitlefont}
+\newfontfamily\parttitlefont[Letters=Uppercase,LetterSpace=1.0,WordSpace=2.0,Mapping=tex-text]{\urantiaparttitlefont}
+\newfontfamily\headerfont[Letters=Uppercase,LetterSpace=2.0,Mapping=tex-text]{\urantiaheaderfont}
+\newfontfamily\headingfont[Letters=Uppercase,LetterSpace=1.2,Numbers=Lining,Mapping=tex-text]{\urantiaheadingfont}
+\newfontfamily\headerackfont[Letters=Uppercase,LetterSpace=2.0,Mapping=tex-text]{\urantiaheaderackfont}
+\newfontfamily\explfont[Mapping=tex-text]{\urantiaexplfont}
+\newfontfamily\libertinefont[Mapping=tex-text]{Linux Libertine O}
+\newcommand{\tux}{{\libertinefont ^^^^e000}}
+%\newfontfamily\lettrinefont[Mapping=tex-text]{GFS Theokritos}
+\newfontfamily\chanceryfont[Mapping=tex-text]{URW Chancery L}
+
+\newcounter{paper}
+\newcounter{secnum}
+
+\newcommand{\uforeword}{%
+\newpage\thispagestyle{empty}%
+\begin{center}
+\headerfont\bibpapertitlefont\forewordup\end{center}%
+\ubookdescr{p0}{
+   toc={\makebox[0.02\linewidth][l]{№}\makebox[0.09\linewidth][r]{0. }\makebox[0.79\linewidth][l]{\forewordtoc\bibdf}},
+   bookmark={\forewordbmk},
+   header={\forewordhdr},
+   abbr={p0}
+}%
+\setcounter{paper}{0}%
+\setcounter{secnum}{0}%
+\fancyhead[CE]{\bibheadfont\partitxt. \partiup}%
+\fancyhead[CO]{\bibheadfont\forewordup}%
+\bib@raise@anchor{\bibpdfbookmark[2]{0. \forewordbmk}{Foreword_0}}%
+}
+
+\newcommand{\headersizeadjusthanlin}[1]{%
+\ifnum #1=9
+   \fontsize{7.1}{7.1}\bfseries
+\fi
+\ifnum #1=97
+   \fontsize{6.5}{6.5}\bfseries
+\fi
+\ifnum #1=191
+   \fontsize{6.5}{6.5}\bfseries
+\fi
+}
+
+\newcommand{\upartheader}[1]{%
+   \par\vspace{3ex}\pagebreak[3]%
+   {
+   \titlefont\bibtocheadfont
+    \ifnum #1=1
+       \partitxt.~\partiup
+    \fi
+    \ifnum #1=2
+       \partiitxt.~\partiiup
+    \fi
+    \ifnum #1=3
+       \partiiitxt.~\partiiiup
+    \fi
+    \ifnum #1=4
+       \partivtxt.~\partivup
+    \fi
+   }\vspace{2ex}%
+}
+
+\newcommand{\upartheadercont}[1]{%
+   \par\vspace{3ex}\pagebreak[3]%
+   {
+   \titlefont\bibtocheadfont
+    \ifnum #1=1
+       \partitxt.~\partiup~\textit{\continuedtxt}
+    \fi
+    \ifnum #1=2
+       \partiitxt.~\partiiup~\textit{\continuedtxt}
+    \fi
+    \ifnum #1=3
+       \partiiitxt.~\partiiiup~\textit{\continuedtxt}
+    \fi
+    \ifnum #1=4
+       \partivtxt.~\partivup~\textit{\continuedtxt}
+    \fi
+   }\vspace{2ex}%
+}
+
+%\renewcommand{\fboxrule}{0pt}
+
+\newcommand{\upapertitleheader}[3]{%
+   \mbox{%
+     \makebox[0.05\linewidth][r]{\null}%
+     \makebox[0.57\linewidth][c]{\textsc{#1}}%
+     \makebox[0.22\linewidth][c]{\textsc{#2}}%
+     \makebox[0.17\linewidth][r]{\textsc{#3}}%
+  }%
+}
+
+\newcommand{\upapertitle}[4]{%
+   {
+     \pagebreak[3]%
+     \makebox[0.05\linewidth][r]{\headerfont#1. }%
+     \makebox[0.57\linewidth][l]{#2\bibdf}%
+     \makebox[0.22\linewidth][l]{#3\bibdf}%
+     \makebox[0.17\linewidth][r]{\headerfont\bibpr{#4}}%
+   }\vspace{0.6ex}\linebreak
+}
+
+\newif\ifpaperfirst
+\paperfirsttrue
+\newif\ifpapernumdot
+\papernumdotfalse
+\newif\iflettrineclr
+% XXX disable for the printed version.
+\lettrineclrtrue
+
+\newcommand{\bibpaperdisplay}[2]{%
+      \begin{center}%
+       \headerfont\bibpaperfont\ifpaperfirst\papertxt\ #1\else#1\ifpapernumdot.\fi\ \papertxt\fi\\[3pt]
+       \addfontfeatures{WordSpace=2.0}\bibpapertitlefont\MakeUppercase{#2}\\
+     \end{center}%
+}
+
+\newcommand{\headersizeadjustluluhb}[1]{%
+}
+
+\newcommand{\upaper}[2]{%
+\newpage\thispagestyle{empty}%
+\par\vskip1ex\pagebreak[3]%
+\setcounter{paper}{#1}%
+\setcounter{secnum}{0}%
+\bibpaperdisplay{#1}{#2}%
+ \ubookdescr{p#1}{
+   toc={\makebox[0.02\linewidth][l]{№}\makebox[0.09\linewidth][r]{#1. }\makebox[0.79\linewidth][l]{#2\bibdf}},
+   bookmark={#1. #2},
+   header={#2},
+   abbr={p#1}
+}%
+\fancyhead[CO]{\bibheadfont\tunemarkup{pghanlin}{\headersizeadjusthanlin{#1}\addfontfeature{WordSpace=1.1}}\tunemarkup{pgluluhb}{\headersizeadjustluluhb{#1}}\MakeUppercase{#2}}%
+\ifnum #1>0
+   \fancyhead[CE]{\bibheadfont\partitxt. \partiup}%
+\fi
+\ifnum #1>31
+   \fancyhead[CE]{\bibheadfont\partiitxt. \partiiup}%
+\fi
+\ifnum #1>56
+   \fancyhead[CE]{\bibheadfont\partiiitxt. \partiiiup}%
+\fi
+\ifnum #1>119
+   \fancyhead[CE]{\bibheadfont\partivtxt. \partivup}%
+\fi
+\bib@raise@anchor{\bibpdfbookmark[2]{0. #2}{p#1_0}}
+}
+
+\newcommand{\ublistelem}[1]{\kern1.0em\relax\makebox[0.2em][r]{#1}\kern0.1em\relax}
+
+%\newcommand*{\usectionorig}[1]{%
+%\def\secname{#1}
+%    \par\vspace*{3ex plus2ex minus1ex}\pagebreak[3]%
+%    \ifx\secname\ackn
+%       {\centering\headerackfont\tunemarkup{pgletter}{\itshape}\tunemarkup{pgluluhb}{\itshape}\uppercase{#1}\\*[3pt]}%
+%    \else
+%       {\centering\headerfont\addfontfeature{WordSpace=2.4}\uppercase{#1}\\*[3pt]}%
+%    \fi
+%\def\bibnobreakspace{ }
+%    \bib@raise@anchor{\bibpdfbookmark[2]{#1}{\bkname_\thechnum_\curr@vs}}%
+%\def\bibnobreakspace{\kern5pt\relax}
+%}
+
+\newcommand*{\usection}[1]{%
+\def\secname{#1}
+    \stepcounter{secnum}%
+    \par\raggedbottom\addtolength{\topskip}{0pt plus 20pt}\vspace*{1ex}%
+    \ifx\secname\ackn
+       {\centering\headerackfont\parbox{\columnwidth}{\tunemarkup{pgluluhb}{\itshape}\tunemarkup{pghanlin}{\itshape}\centering\uppercase{#1}}\\*[3pt]}%
+    \else
+       {\centering\headerfont\addfontfeature{WordSpace=2.4}\parbox{\columnwidth}{\centering\uppercase{#1}}\\*[3pt]}%
+    \fi
+\def\bibnobreakspace{ }
+    % XXX for section-level bookmarks uncomment the following line and comment the one after
+    \bib@raise@anchor{\bibpdfbookmark[2]{#1}{\bkname_\thechnum_\curr@vs}\label{p\thepaper_\thesecnum}\hypertarget{p\thepaper_\thesecnum}{}}%
+    %\bib@raise@anchor{\label{p\thepaper_\thesecnum}\hypertarget{p\thepaper_\thesecnum}{}}%
+\def\bibnobreakspace{\kern5pt\relax}
+    \flushbottom\addtolength{\topskip}{0pt plus -20pt}
+}
+
+\def\bibnobreakspace{\kern5pt\relax}
+\newcommand{\separatorline}{\begin{center}*\ \ *\ \ *\ \ *\ \ *\end{center}}
+\newcommand{\bibtextbf}[1]{\textbf{#1}}
+\renewcommand{\biburl}[1]{\biburlsize\url{#1}}
+
+\newcommand{\bibtextul}[1]{\uline{#1}}
+\newcommand{\bibexpl}[1]{{\explfont #1}}
+\providecommand{\latintext}{}
+\providecommand{\textlatin}[1]{{#1}}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+\tunemarkup{pghanlin}{%
+\def\pc{{\large\P}\kern3pt}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\bibfnchapsize}{\headerfont\Large}
+\renewcommand{\bibfnvssize}{\headerfont\large}
+\protected\def\print@vssup#1{\makebox[0.2em][r]{\@textsuperscript{\headerfont\fontsize{8}{8}\selectfont#1}}\kern0.2em\relax}
+\newcommand{\biblogoscale}{0.1}
+\newcommand{\biburlsize}{\fontsize{6.5}{6.5}\selectfont}
+\newcommand{\bibcovertitlefont}{\parttitlefont\fontsize{18}{18}\selectfont\addfontfeature{LetterSpace=2.0,WordSpace=1.5}}
+\newcommand{\bibtocsuperheadfont}{\fontsize{13}{13}\selectfont}
+\renewcommand{\bibtocheadfont}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{7.2}{7.4}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\fontsize{7.4}{7.4}\selectfont}
+\newcommand{\bibheadpapersize}{\fontsize{8}{8}\selectfont}
+\renewcommand{\bibheadchapsize}{\fontsize{8}{8}\selectfont}
+\renewcommand{\bibheadversesize}{\fontsize{7}{7}\selectfont}
+\renewcommand{\bibheadpagesize}{\fontsize{8}{8}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{14}{17}\selectfont}
+\newcommand{\urantiamainfontsize}{14/17}
+\newcommand{\bibpaperfont}{\Large}
+\newcommand{\bibpapertitlefont}{\LARGE}
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.0, 0.0, 0.0}
+\newcommand{\vsetoff}{\vspace{1ex}}
+\newcommand{\hsetoff}{\hspace*{1em}}
+\setlength\parindent{8\p@}
+}
+
+\tunemarkup{pgkindledx}{%
+\def\pc{{\normalsize\P\kern2pt}}
+%\def\pc{}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\bibfnchapsize}{\large\bfseries}
+\renewcommand{\bibfnvssize}{\normalsize\bfseries}
+%\protected\def\print@vssup#1{\@textsuperscript{\fontsize{8}{8}\selectfont#1}\kern0.2em\relax}
+\protected\def\print@vssup#1{\makebox[0.2em][r]{\@textsuperscript{\fontsize{9}{9}\selectfont#1}}\kern0.2em\relax}
+\newcommand{\biblogoscale}{0.2}
+\newcommand{\biburlsize}{\small}
+\newcommand{\bibcovertitlefont}{\titlefont\fontsize{30}{30}\selectfont\addfontfeature{LetterSpace=2.0,WordSpace=2.0}}
+\newcommand{\bibtocsuperheadfont}{\fontsize{20}{22}\selectfont}
+\renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=4.0,WordSpace=2.0}\fontsize{13}{14}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{10.0}{10.9}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=2.5,WordSpace=1.3}\fontsize{9.6}{9.6}\bfseries}
+\newcommand{\bibheadpapersize}{\fontsize{10.0}{10.0}\selectfont}
+\renewcommand{\bibheadchapsize}{\fontsize{9.5}{9.5}\selectfont}
+\renewcommand{\bibheadversesize}{\fontsize{9}{9}\selectfont}
+\renewcommand{\bibheadpagesize}{\fontsize{10}{10}\selectfont}
+\newcommand{\bibpaperfont}{\fontsize{15.0}{17}\selectfont}
+\newcommand{\bibpapertitlefont}{\fontsize{16.0}{18.0}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{12.5}{15}\selectfont}
+\newcommand{\urantiamainfontsize}{12.5/15}
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.0, 0.0, 0.0}
+\newcommand{\vsetoff}{\vspace{1ex}}
+\newcommand{\hsetoff}{\hspace*{1em}}
+}
+
+\tunemarkup{pgluluhb}{%
+\def\pc{{\small\P}\kern2pt}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\bibfnchapsize}{\large\bfseries}
+\renewcommand{\bibfnvssize}{\normalsize\bfseries}
+%\protected\def\print@vssup#1{\@textsuperscript{\fontsize{8}{8}\selectfont#1}\kern0.2em\relax}
+\protected\def\print@vssup#1{\makebox[0.2em][r]{\@textsuperscript{\fontsize{8}{8}\selectfont#1}}\kern0.2em\relax}
+\newcommand{\biblogoscale}{0.2}
+\newcommand{\biburlsize}{\small}
+\newcommand{\bibcovertitlefont}{\titlefont\fontsize{30}{30}\selectfont\addfontfeature{LetterSpace=2.0,WordSpace=2.0}}
+\newcommand{\bibtocsuperheadfont}{\fontsize{20}{22}\selectfont}
+\renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=4.0,WordSpace=2.0}\fontsize{13}{14}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{10.5}{11.5}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=1.2,WordSpace=1.3}\fontsize{9}{9}\selectfont}
+\newcommand{\bibheadpapersize}{\fontsize{9}{9}\selectfont}
+\renewcommand{\bibheadchapsize}{\fontsize{9}{9}\selectfont}
+\renewcommand{\bibheadversesize}{\fontsize{8.5}{8.5}\selectfont}
+\renewcommand{\bibheadpagesize}{\fontsize{9}{9}\selectfont}
+\newcommand{\bibpaperfont}{\fontsize{15.0}{17}\selectfont}
+\newcommand{\bibpapertitlefont}{\fontsize{16.0}{18.0}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{12.1}{13.65}\selectfont}
+\newcommand{\urantiamainfontsize}{12.1/13.65}
+\iflettrineclr
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{ubdarkred}{rgb}{0.4, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.093, 0.289, 0.777}
+\else
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.0, 0.0, 0.0}
+\fi
+\newcommand{\vsetoff}{\vspace{1ex}}
+\newcommand{\hsetoff}{\hspace*{1em}}
+}
+
+\tunemarkup{pgaf}{%
+\renewcommand{\headrulewidth}{0.0pt}
+\def\fnc#1{}
+\def\fnst#1{}
+\def\pc{}
+\protected\def\print@vssup#1{\makebox[0.2em][r]{\@textsuperscript{\fontsize{5}{5}\selectfont#1}}\kern0.2em\relax}
+\newcommand{\biburlsize}{\Large}
+\newcommand{\bibcovertitlefont}{\titlefont\fontsize{40}{50}\selectfont\addfontfeature{LetterSpace=2.0,WordSpace=1.5}}
+\newcommand{\bibtocsuperheadfont}{\fontsize{12}{14}\selectfont}
+\renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=6.0,WordSpace=3.0}\fontsize{11}{11}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{9}{10}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=3.0,WordSpace=2.0}\fontsize{10}{10}\selectfont}
+\newcommand{\bibheadpapersize}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibheadchapsize}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibheadversesize}{\fontsize{9}{10}\selectfont}
+\renewcommand{\bibheadpagesize}{\fontsize{10}{10}\selectfont}
+\newcommand{\bibpaperfont}{\fontsize{10.0}{11.0}\selectfont}
+\newcommand{\bibpapertitlefont}{\fontsize{10.0}{11.0}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{9.35}{10.74}\selectfont}
+\newcommand{\urantiamainfontsize}{9.35/10.74}
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.0, 0.0, 0.0}
+\newcommand{\vsetoff}{\vspace{0.5ex}}
+\newcommand{\hsetoff}{\hspace*{1em}}
+}
+
+
+\tunemarkup{pgafour}{%
+\def\pc{{\small\P}\kern2pt}
+%\def\pc{}
+\renewcommand{\footnotesize}{\fontsize{11}{13}\selectfont}
+\renewcommand{\bibfnchapsize}{\large\bfseries}
+\renewcommand{\bibfnvssize}{\normalsize\bfseries}
+%\protected\def\print@vssup#1{\@textsuperscript{\fontsize{6}{6}\selectfont#1}\kern0.2em\relax}
+\protected\def\print@vssup#1{\makebox[0.2em][r]{\@textsuperscript{\fontsize{8}{8}\selectfont#1}}\kern0.2em\relax}
+\newcommand{\biblogoscale}{0.25}
+\newcommand{\biburlsize}{\large}
+\newcommand{\bibcovertitlefont}{\titlefont\fontsize{40}{50}\selectfont\addfontfeature{LetterSpace=2.0,WordSpace=1.5}}
+\newcommand{\bibtocsuperheadfont}{\fontsize{22}{24}\selectfont}
+\renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=6.0,WordSpace=3.0}\fontsize{15}{17}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{14}{16}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=4.0,WordSpace=2.0}\large}
+\newcommand{\bibheadpapersize}{\large}
+\renewcommand{\bibheadchapsize}{\large}
+\renewcommand{\bibheadversesize}{\normalsize}
+\renewcommand{\bibheadpagesize}{\large}
+\newcommand{\bibpaperfont}{\fontsize{14.0}{16.0}\selectfont}
+\newcommand{\bibpapertitlefont}{\fontsize{16.0}{19.0}\selectfont}
+\iflettrineclr
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{ubdarkred}{rgb}{0.4, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.093, 0.289, 0.777}
+\else
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.0, 0.0, 0.0}
+\fi
+\renewcommand{\bibbookend}{\fontsize{12.8}{15}\selectfont}
+\newcommand{\urantiamainfontsize}{12.8/15}
+\newcommand{\vsetoff}{\vspace{1ex}}
+\newcommand{\hsetoff}{\hspace*{1em}}
+}
+
+\tunemarkup{pgletter}{%
+\def\pc{{\small\P}\kern2pt}
+%\def\pc{}
+\renewcommand{\footnotesize}{\fontsize{11}{13}\selectfont}
+\renewcommand{\bibfnchapsize}{\large\bfseries}
+\renewcommand{\bibfnvssize}{\normalsize\bfseries}
+%\protected\def\print@vssup#1{\@textsuperscript{\fontsize{8}{8}\selectfont#1}\kern0.2em\relax}
+\protected\def\print@vssup#1{\makebox[0.2em][r]{\@textsuperscript{\fontsize{8}{8}\selectfont#1}}\kern0.2em\relax}
+\newcommand{\biblogoscale}{0.25}
+\newcommand{\biburlsize}{\large}
+\newcommand{\bibcovertitlefont}{\titlefont\fontsize{40}{50}\selectfont\addfontfeature{LetterSpace=2.0,WordSpace=1.5}}
+\newcommand{\bibtocsuperheadfont}{\fontsize{22}{24}\selectfont}
+\renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=6.0,WordSpace=3.0}\fontsize{15}{17}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{13.4}{14.4}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=4.0,WordSpace=2.0}\large}
+\newcommand{\bibheadpapersize}{\large}
+\renewcommand{\bibheadchapsize}{\large}
+\renewcommand{\bibheadversesize}{\normalsize}
+\renewcommand{\bibheadpagesize}{\large}
+\newcommand{\bibpaperfont}{\fontsize{15.0}{18.0}\selectfont}
+\newcommand{\bibpapertitlefont}{\fontsize{17.0}{18.0}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{12.8}{15}\selectfont}
+\newcommand{\urantiamainfontsize}{12.8/15}
+\iflettrineclr
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{ubdarkred}{rgb}{0.4, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.093, 0.289, 0.777}
+\else
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubfblue}{rgb}{0.0, 0.0, 0.0}
+\fi
+\newcommand{\vsetoff}{\vspace{1ex}}
+\newcommand{\hsetoff}{\hspace*{1em}}
+}
+
+
+\renewcommand{\bibdropcapscolor}{ubdarkblue}
+
+\columnseprule=0.0pt
+\renewcommand{\bibfnvsmark}{}
+
+% lettrine letter size (in lines)
+\setcounter{DefaultLines}{2}
+% uncomment for a more fancy lettrine font (also uncomment \lettrinefont)
+%\renewcommand{\LettrineFontHook}{\lettrinefont}
+
+\newcommand*{\indextitle}[1]{%
+  \clp
+  \thispagestyle{empty}%
+  \bibmark{book}{\MakeUppercase{#1}}%
+  \begin{center}%
+  \titlefont\scshape\Huge#1
+  \end{center}%
+}
+
+\newcommand{\indexhead}[1]{{\bfseries#1}\\}
+\newcommand{\indexindent}[1]{\hspace*{2ex}#1\\}
+
+\newcommand*{\ubflogo}{%
+    \vfill\centering
+    \includegraphics{misc/ubf-logo/logo_small.bmp}\kern4pt\parbox[b]{5cm}{%
+       \textcolor{ubfblue}{\chanceryfont The Urantia Book Fellowship}\\
+       \texttt{\small http://www.urantiabook.org/newbook/}
+    }%
+    \vfill
+}
+
+\def\mytoday{{\ddmmyyyydate\today}}
+\def\bibchap{\printvssup{\curr@vs}}
+
+\def\vs@range{%
+  \@ifundefined{mark@vs@\thepage}{}{%
+    \bibheadpapersize\thepaper:\expandafter\expandafter\expandafter
+      \vs@range@a\csname mark@vs@\thepage\endcsname
+  }%
+}
+
+\fancyhead[LE,RO]{\bibheadfont\vs@range}
+\fancyhead[LO,RE]{\bibheadfont\bibheadpagesize\thepage}
+
+\newcommand{\parti}{%
+\clp
+\thispagestyle{empty}\vspace*{\stretch{0.2}}%
+\begin{center}%
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\huge}%
+\tunemarkup{pgkindledx}{\huge}%
+\tunemarkup{pgletter}{\Huge}%
+\tunemarkup{pgafour}{\Huge}%
+{\addfontfeature{LetterSpace=8.0,WordSpace=3.0}\parttitlefont\partitxt}\\[2ex]
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\Large}%
+\tunemarkup{pgkindledx}{\LARGE}%
+\tunemarkup{pgletter}{\huge}%
+\tunemarkup{pgafour}{\huge}%
+{\addfontfeature{LetterSpace=6.0,WordSpace=2.0}\parttitlefont\partimix}\\[1ex]
+\tunemarkup{pghanlin}{\fontsize{8}{10}\selectfont}%
+\tunemarkup{pgluluhb}{\large}%
+\tunemarkup{pgkindledx}{\large}%
+\tunemarkup{pgletter}{\LARGE}%
+\tunemarkup{pgafour}{\LARGE}%
+\partisub\\
+\end{center}%
+\vspace*{\stretch{0.5}}\null
+\bibpart{\partiup}{\partitxt\ \partimix}{pt1}%
+\clp
+}
+
+\newcommand{\partii}{%
+\clp
+\thispagestyle{empty}\vspace*{\stretch{0.2}}%
+\begin{center}%
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\huge}%
+\tunemarkup{pgkindledx}{\huge}%
+\tunemarkup{pgletter}{\Huge}%
+\tunemarkup{pgafour}{\Huge}%
+{\addfontfeature{LetterSpace=8.0,WordSpace=3.0}\parttitlefont\partiitxt}\\[2ex]
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\Large}%
+\tunemarkup{pgkindledx}{\LARGE}%
+\tunemarkup{pgletter}{\huge}%
+\tunemarkup{pgafour}{\huge}%
+{\addfontfeature{LetterSpace=8.0,WordSpace=3.0}\parttitlefont\partiimix}\\[1ex]
+\tunemarkup{pghanlin}{\fontsize{8}{10}\selectfont}%
+\tunemarkup{pgluluhb}{\large}%
+\tunemarkup{pgkindledx}{\large}%
+\tunemarkup{pgletter}{\LARGE}%
+\tunemarkup{pgafour}{\LARGE}%
+\partiisub\\
+\end{center}%
+\vspace*{\stretch{0.5}}\null
+\bibpart{\partiiup}{\partiitxt\ \partiimix}{pt2}%
+\clp
+}
+
+\newcommand{\partiii}{%
+\clp
+\thispagestyle{empty}\vspace*{\stretch{0.2}}%
+\begin{center}%
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\huge}%
+\tunemarkup{pgkindledx}{\huge}%
+\tunemarkup{pgletter}{\Huge}%
+\tunemarkup{pgafour}{\Huge}%
+{\addfontfeature{LetterSpace=8.0,WordSpace=3.0}\parttitlefont\partiiitxt}\\[2ex]
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\Large}%
+\tunemarkup{pgkindledx}{\LARGE}%
+\tunemarkup{pgletter}{\huge}%
+\tunemarkup{pgafour}{\huge}%
+{\addfontfeature{LetterSpace=6.0,WordSpace=2.0}\parttitlefont\partiiimix}\\[1ex]
+\tunemarkup{pghanlin}{\fontsize{8}{10}\selectfont}%
+\tunemarkup{pgluluhb}{\large}%
+\tunemarkup{pgkindledx}{\large}%
+\tunemarkup{pgletter}{\LARGE}%
+\tunemarkup{pgafour}{\LARGE}%
+\partiiisub\\
+\end{center}%
+\vspace*{\stretch{0.5}}\null
+\bibpart{\partiiiup}{\partiiitxt\ \partiiimix}{pt3}
+\clp
+}
+
+\newcommand{\partiv}{%
+\clp
+\thispagestyle{empty}\vspace*{\stretch{0.2}}%
+\begin{center}%
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\huge}%
+\tunemarkup{pgkindledx}{\huge}%
+\tunemarkup{pgletter}{\Huge}%
+\tunemarkup{pgafour}{\Huge}%
+{\addfontfeature{LetterSpace=8.0,WordSpace=3.0}\parttitlefont\partivtxt}\\[2ex]
+\tunemarkup{pghanlin}{\Large}%
+\tunemarkup{pgluluhb}{\Large}%
+\tunemarkup{pgkindledx}{\LARGE}%
+\tunemarkup{pgletter}{\huge}%
+\tunemarkup{pgafour}{\huge}%
+{\addfontfeature{LetterSpace=6.0,WordSpace=2.0}\parttitlefont\partivmix}\\[1ex]
+\tunemarkup{pghanlin}{\fontsize{8}{10}\selectfont}%
+\tunemarkup{pgluluhb}{\large}%
+\tunemarkup{pgkindledx}{\large}%
+\tunemarkup{pgletter}{\LARGE}%
+\tunemarkup{pgafour}{\LARGE}%
+\partivsubone\\[1ex]
+\partivsubtwo\\
+\end{center}%
+\vspace*{\stretch{0.5}}\null
+\bibpart{\partivup}{\partivtxt\ \partivmix}{pt4}
+\clp
+}
+
+% vine leaves
+\def\hr{j}
+\def\hhr{k}
+\def\hhhr{l}
+\def\hhhhr{i}
+\def\hl{j}
+\def\hhl{k}
+\def\hhhl{l}
+\def\hhhhl{i}
+\def\topplank{fghe}
+\def\botplank{ghef}
+\def\topl{a}
+\def\topprer{f}
+\def\topr{b}
+\def\botl{c}
+\def\botprer{g}
+\def\botr{d}
+
+% plain border
+%\def\hr{y}
+%\def\hhr{y}
+%\def\hhhr{y}
+%\def\hhhhr{y}
+%\def\hl{x}
+%\def\hhl{x}
+%\def\hhhl{x}
+%\def\hhhhl{x}
+%\def\topplank{ssss}
+%\def\botplank{vvvv}
+%\def\topl{r}
+%\def\topprer{s}
+%\def\topr{t}
+%\def\botl{u}
+%\def\botprer{v}
+%\def\botr{w}
+
+\newcommand{\titleframe}{%
+\begingroup
+\tunemarkup{pgkindledx}{%
+\setlength{\unitlength}{9.8pt}%
+\fontsize{\unitlength}{\unitlength}\usefont{U}{webo}{xl}{n}
+   \begin{picture}(0,0)(0.9,-56.2)%
+     % top left corner
+     \put(0,0){\topl}
+     % top plank
+     \multiput(1,0)(4,0){9}{\topplank}
+     % top right corner
+     \put(37,0){\topprer}
+     \put(38,0){\topr}
+     % right plank
+     \multiput(38,-1)(0,-4){14}{\hr}
+     \multiput(38,-2)(0,-4){14}{\hhr}
+     \multiput(38,-3)(0,-4){14}{\hhhr}
+     \multiput(38,-4)(0,-4){14}{\hhhhr}
+     % left plank
+     \multiput(0,-1)(0,-4){14}{\hhhhl}
+     \multiput(0,-2)(0,-4){14}{\hl}
+     \multiput(0,-3)(0,-4){14}{\hhl}
+     \multiput(0,-4)(0,-4){14}{\hhhl}
+     % bottom left corner
+     \put(0,-57){\botl}
+     % bottom plank
+     \multiput(1,-57)(4,0){9}{\botplank}
+     % bottom right corner
+     \put(37,-57){\botprer}
+     \put(38,-57){\botr}
+   \end{picture}%
+}%
+\tunemarkup{pghanlin}{%
+\setlength{\unitlength}{5.8pt}%
+\fontsize{\unitlength}{\unitlength}\usefont{U}{webo}{xl}{n}
+   \begin{picture}(0,0)(1.6,-56.4)%
+     % top left corner
+     \put(0,0){\topl}
+     % top plank
+     \multiput(1,0)(4,0){10}{\topplank}
+     % top right corner
+     \put(41,0){\topprer}
+     \put(42,0){\topr}
+     % right plank
+     \multiput(42,-1)(0,-4){14}{\hr}
+     \multiput(42,-2)(0,-4){14}{\hhr}
+     \multiput(42,-3)(0,-4){14}{\hhhr}
+     \multiput(42,-4)(0,-4){14}{\hhhhr}
+     % left plank
+     \multiput(0,-1)(0,-4){14}{\hhhhl}
+     \multiput(0,-2)(0,-4){14}{\hl}
+     \multiput(0,-3)(0,-4){14}{\hhl}
+     \multiput(0,-4)(0,-4){14}{\hhhl}
+     % bottom left corner
+     \put(0,-57){\botl}
+     % bottom plank
+     \multiput(1,-57)(4,0){10}{\botplank}
+     % bottom right corner
+     \put(41,-57){\botprer}
+     \put(42,-57){\botr}
+   \end{picture}%
+}%
+\endgroup
+}
+
+%\tunemarkup{pgafour}{\tolerance=400}
+%\tunemarkup{pgletter}{\tolerance=400}
+\tunemarkup{pgluluhb}{\tolerance=9999}
+\tunemarkup{pgkindledx}{\tolerance=9999}
+\tunemarkup{pghanlin}{\tolerance=9999}
+%\widowpenalty=9000
+%\clubpenalty=9000
