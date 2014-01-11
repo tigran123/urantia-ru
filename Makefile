@@ -10,4 +10,51 @@ BOOKS = p000 p001 p002 p003 p004 p005 p006 p007 p008 p009 p010 p011 p012 p013 p0
 
 MISCFILES = tex/title.tex tex/paper-titles.tex
 
-include ../utils/Bible.make
+WORKDIR = /tmp/urantia-ru
+
+LATEX = xelatex -output-directory=$(WORKDIR) -halt-on-error $(MOD) < /dev/null > /dev/null 2>&1
+
+ifdef LIST
+	TEXFILES = $(MISCFILES) \
+		   $(shell echo $(LIST) | sed "s/\([^ ][^ ]*\)/tex\/\1.tex/g")
+	SUBSET=yes
+else
+	LIST = $(BOOKS)
+	TEXFILES = $(wildcard tex/*.tex)
+	SUBSET=no
+endif
+
+all::		$(MOD).pdf
+
+.PHONY:		clean
+
+clean::		
+		@rm -rf $(WORKDIR) select-book.tex
+
+vclean:		clean
+		@rm -f $(MOD).pdf
+
+$(MOD).pdf:	tex $(MOD).tex select-book.tex $(TEXFILES)
+		@mkdir -p $(WORKDIR)
+		$(LATEX)
+ifndef DRAFT
+		#mv $(WORKDIR)/$(MOD).pdf $(WORKDIR)/$(MOD)-1.pdf
+		#mv $(WORKDIR)/$(MOD).log $(WORKDIR)/$(MOD)-1.log
+		$(LATEX)
+		#mv $(WORKDIR)/$(MOD).pdf $(WORKDIR)/$(MOD)-2.pdf
+		#mv $(WORKDIR)/$(MOD).log $(WORKDIR)/$(MOD)-2.log
+		$(LATEX)
+endif
+		mv $(WORKDIR)/$(MOD).pdf .
+
+select-book.tex:	
+ifeq ($(SUBSET),yes)
+	$(shell export LINE="\includeonly{" ; \
+		for b in $(LIST) ; do \
+			LINE="$${LINE}tex/$${b}," ; \
+		done ; \
+		echo $${LINE}} | sed "s/,}/}/" > select-book.tex \
+	)
+else
+	> select-book.tex
+endif

@@ -13,11 +13,7 @@
 % 6x9" to fit 4x800 pages.
 \tunemarkup{pgluluhb}{\RequirePackage[dvips,headheight=20pt,headsep=7pt,vmargin={0.6in,0.5in},hmargin={0.8in,0.7in},twoside=true,papersize={6in,9in}]{geometry}}
 
-\tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=17pt,headsep=3pt,vmargin={0.18in,0.1in},hmargin={0.07in},twoside=false,papersize={90.0mm,120.0mm}]{geometry}}
-
-% fix page dimentions in xelatex - can be dropped when geometry.sty
-% will become xetex-aware and/or geometry.cfg in texlive will be fixed
-\@ifundefined{XeTeXversion}{}{\def\Gm@checkdrivers{\Gm@setdriver{pdftex}}}
+\tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=19pt,headsep=2pt,vmargin={0.2in,0.15in},hmargin={0.07in},twoside=false,papersize={90.0mm,120.0mm}]{geometry}}
 
 % for typesetting fractions: 1/2, 1/6, etc.
 \newcommand{\bibfrac}[2]{{\addfontfeature{Fractions=On}#1/#2}}
@@ -29,7 +25,7 @@
 \newfontfamily\titlefont[Letters=Uppercase,LetterSpace=1.0,WordSpace=2.0,Mapping=tex-text]{\urantiatitlefont}
 \newfontfamily\parttitlefont[Letters=Uppercase,LetterSpace=1.0,WordSpace=2.0,Mapping=tex-text]{\urantiaparttitlefont}
 \newfontfamily\headerfont[Letters=Uppercase,LetterSpace=2.0,Mapping=tex-text]{\urantiaheaderfont}
-\newfontfamily\headingfont[Letters=Uppercase,LetterSpace=1.2,Numbers=Lining,Mapping=tex-text]{\urantiaheadingfont}
+\newfontfamily\headingfont[LetterSpace=1.2,Mapping=tex-text]{\urantiaheadingfont}
 \newfontfamily\headerackfont[Letters=Uppercase,LetterSpace=2.0,Mapping=tex-text]{\urantiaheaderackfont}
 \newfontfamily\explfont[Mapping=tex-text]{\urantiaexplfont}
 \newfontfamily\libertinefont[Mapping=tex-text]{Linux Libertine O}
@@ -215,8 +211,6 @@
 \newcommand{\bibexpl}[1]{{\explfont #1}}
 \providecommand{\latintext}{}
 \providecommand{\textlatin}[1]{{#1}}
-
-\renewcommand{\headrulewidth}{0.5pt}
 
 \tunemarkup{pghanlin}{%
 \def\pc{{\large\P}\kern3pt}
@@ -419,7 +413,7 @@
 \renewcommand{\bibfnvsmark}{}
 
 % lettrine letter size (in lines)
-\setcounter{DefaultLines}{2}
+\setcounter{DefaultLines}{3}
 % uncomment for a more fancy lettrine font (also uncomment \lettrinefont)
 %\renewcommand{\LettrineFontHook}{\lettrinefont}
 

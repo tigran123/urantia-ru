@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[2000/06/01]
 \ProvidesPackage{urantia-ru}[2010/06/19 v1.0]
-\RequirePackage[parvs,nomarnvs,nogeometry,lettrine,vssup,nofnpara]{bible}
+\RequirePackage[parvs,lettrine]{ubook}
 \RequirePackage{xltxtra,polyglossia,hyphenat}
 %\tunemarkuptag{pgafour}
 %\tunemarkuptag{pgletter}
@@ -11,7 +11,7 @@
 \def\urantiamainfont{Minion Pro}
 \def\urantiatitlefont{Minion Pro}
 \def\urantiaheaderfont{Minion Pro}
-\def\urantiaheadingfont{Minion Pro}
+\def\urantiaheadingfont{Arial Narrow Bold}
 \def\urantiaheaderackfont{Minion Pro}
 \def\urantiaexplfont{Minion Pro}
 \input tex/urantia-core.tex
@@ -20,12 +20,13 @@
 %\renewcommand{\DefaultLoversize}{0.118}
 
 \DeclareTextAccent{\'}{EU1}{180}
+\newcommand{\titlesepbig}{{\usefont{U}{webo}{xl}{n}\huge ahb}}
 
 \AtBeginDocument{%
 \hypersetup{%
   pdftitle={Kniga Urantia},%
   pdfauthor={Urantia Book Society of Greater New York - http://www.urantia.info},%
-  pdfcreator={XeLaTeX of TeX Live 2008},%
+  pdfcreator={XeLaTeX of TeX Live 2013},%
   pdfsubject={Kniga Urantia},%
   pdfkeywords={urantia,fifth,epochal,revelation,jesus,michael},%
   pdflang={Russian},%
@@ -53,11 +54,11 @@
 \renewcommand{\bibtocsuperheadfont}{\fontsize{10}{10}\selectfont}
 \renewcommand{\bibtocheadfont}{\fontsize{10}{10}\selectfont}
 \renewcommand{\bibtocfont}{\fontsize{8.7}{9.3}\selectfont}
-\renewcommand{\bibheadfont}{\fontsize{6.5}{6.5}\selectfont}
-\renewcommand{\bibheadpapersize}{\fontsize{9.0}{10}\selectfont}
-\renewcommand{\bibheadchapsize}{\fontsize{8.7}{10}\selectfont}
-\renewcommand{\bibheadversesize}{\fontsize{8.0}{10}\selectfont}
-\renewcommand{\bibheadpagesize}{\fontsize{9.0}{10}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\fontsize{6.5}{6.5}\selectfont}
+\renewcommand{\bibheadpapersize}{\headingfont\fontsize{9.0}{10}\selectfont}
+\renewcommand{\bibheadchapsize}{\headingfont\fontsize{8.7}{10}\selectfont}
+\renewcommand{\bibheadversesize}{\headingfont\fontsize{8.0}{10}\selectfont}
+\renewcommand{\bibheadpagesize}{\headingfont\fontsize{9.0}{10}\selectfont}
 \renewcommand{\bibbookend}{\fontsize{15}{17}\selectfont}
 \renewcommand{\urantiamainfontsize}{15/17}
 }
