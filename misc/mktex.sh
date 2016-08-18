@@ -8,6 +8,7 @@ METRIC_FILE=metrics/exemplarmap.js
 DATA_DIR=u8-notags
 FILE_PREFIX=rusnys2006_exemplar
 PARCLUSTER_FILE=StandardizedParagraphBreaks.txt
+PAPER_AUTHORS=paper-authors.txt
 
 declare -a parlist lineid linetype
 declare -i sec i paridx linenum
@@ -58,6 +59,8 @@ do
             papertitle=$(echo -E "$text" | sed -ne "s%^Текст [0-9][0-9]*.. \(.*\)$*$%\1%p")
             echo -E "\upaper{$i}{$papertitle}" >> tex/p${p}.tex
          fi
+         author=$(grep "${p}" ${PAPER_AUTHORS} | sed 's/^p...://')
+         echo -E "\author{$author}" >> tex/p${p}.tex
       else
          if [ "${linetype[$linenum]}" = "sectiontitle" ] ; then
             echo -E "\usection{$text}" >> tex/p${p}.tex
