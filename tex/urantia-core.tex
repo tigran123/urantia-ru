@@ -13,7 +13,7 @@
 % 6x9" to fit 4x800 pages.
 \tunemarkup{pgluluhb}{\RequirePackage[dvips,headheight=20pt,headsep=7pt,vmargin={0.6in,0.5in},hmargin={0.8in,0.7in},twoside=true,papersize={6in,9in}]{geometry}}
 
-\tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=19pt,headsep=2pt,vmargin={0.2in,0.15in},hmargin={0.07in},twoside=false,papersize={90.0mm,120.0mm}]{geometry}}
+\tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=19pt,headsep=2pt,vmargin={0.2in,0.15in},hmargin={0.07in},twoside=true,papersize={90.0mm,120.0mm}]{geometry}}
 
 % for typesetting fractions: 1/2, 1/6, etc.
 \newcommand{\bibfrac}[2]{{\addfontfeature{Fractions=On}#1/#2}}
@@ -48,7 +48,7 @@
 }%
 \setcounter{paper}{0}%
 \setcounter{secnum}{0}%
-\fancyhead[CE]{\bibheadfont\partitxt. \partiup}%
+%\fancyhead[CE]{\bibheadfont\partitxt. \partiup}%
 \fancyhead[CO]{\bibheadfont\forewordup}%
 \bib@raise@anchor{\bibpdfbookmark[2]{0. \forewordbmk}{Foreword_0}}%
 }
@@ -448,8 +448,14 @@
   }%
 }
 
-\fancyhead[LE,RO]{\bibheadfont\vs@range}
-\fancyhead[LO,RE]{\bibheadfont\bibheadpagesize\thepage}
+\fancyhead{}
+\fancyfoot{}
+
+\fancyhead[L]{\bibheadfont\vs@range}
+\fancyhead[R]{\bibheadfont\bibheadpagesize\thepage}
+
+\newcommand{\authorfont}{\fontsize{13}{9}\bfseries\itshape}%
+\renewcommand{\author}[1]{\thispagestyle{empty}\begin{center}\authorfont\textcolor{ubdarkblue}{#1}\end{center}\fancyhead[CE]{\bibheadfont\MakeUppercase{#1}}}
 
 \newcommand{\parti}{%
 \clp
