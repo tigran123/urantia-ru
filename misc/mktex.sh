@@ -116,6 +116,12 @@ do
       fi
       ((linenum++))
    done < ${DATA_DIR}/${FILE_PREFIX}_p${p}.u8
-   tac tex/p${p}.tex | sed '1a\\\vsetoff' | tac > tex/p${p}.tex.tmp
-   mv tex/p${p}.tex.tmp tex/p${p}.tex
+   if ((i <= 119)) ; then
+      tac tex/p${p}.tex | sed '1a\\\vsetoff' | tac > tex/p${p}.tex.tmp
+      mv tex/p${p}.tex.tmp tex/p${p}.tex
+   fi
+   if ((i == 121)) ; then
+      tac tex/p${p}.tex | sed '3a\\\vsetoff' | tac > tex/p${p}.tex.tmp
+      mv tex/p${p}.tex.tmp tex/p${p}.tex
+   fi
 done
