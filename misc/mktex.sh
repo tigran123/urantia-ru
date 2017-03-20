@@ -78,7 +78,7 @@ do
                 ntext=$(echo $text | sed -e "s%^\([0-9][0-9]*\)\. %\\\ublistelem{\1.}\\\bibnobreakspace %")
                 if grep -q " $i:$chap.$verse$" ${PARCLUSTER_FILE}
                 then
-                   echo -nE "\vs ${lineid[$linenum]} \P\ ${ntext}" >> tex/p${p}.tex
+                   echo -nE "\vs ${lineid[$linenum]} \pc ${ntext}" >> tex/p${p}.tex
                 else
                    echo -nE "\vs ${lineid[$linenum]} ${ntext}" >> tex/p${p}.tex
                 fi
@@ -116,4 +116,6 @@ do
       fi
       ((linenum++))
    done < ${DATA_DIR}/${FILE_PREFIX}_p${p}.u8
+   tac tex/p${p}.tex | sed '1a\\\vsetoff' | tac > tex/p${p}.tex.tmp
+   mv tex/p${p}.tex.tmp tex/p${p}.tex
 done
