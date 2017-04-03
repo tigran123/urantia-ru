@@ -569,8 +569,11 @@ urlcolor=black
   \fi
   \if@tempswa
     \@input{#1.tex}%
+    \ifdoublecol\ifnum\col@number>\@ne\end{multicols}\fi\fi
   \fi
 }
+
+
 
 % new datetime package must be loaded after babel
 \RequirePackage{datetime}
