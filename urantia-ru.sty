@@ -1,11 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}[2000/06/01]
 \ProvidesPackage{urantia-ru}[2010/06/19 v1.0]
-\RequirePackage[parvs,lettrine]{ubook}
+\RequirePackage[parvs,lettrine,doublecol]{ubook}
 \RequirePackage{xltxtra,polyglossia,hyphenat}
 %\tunemarkuptag{pgafour}
 %\tunemarkuptag{pgletter}
 %\tunemarkuptag{pgluluhb}
-\tunemarkuptag{pghanlin}
+\tunemarkuptag{pgcrownq}
+%\tunemarkuptag{pghanlin}
 \setdefaultlanguage{russian}
 \def\urantiaparttitlefont{Arno Pro Semibold}
 \def\urantiamainfont{Arno Pro}
@@ -20,7 +21,9 @@
 %\renewcommand{\DefaultLoversize}{0.118}
 
 \DeclareTextAccent{\'}{EU1}{180}
+\newcommand{\hsetoff}{\hspace*{1em}}
 \newcommand{\titlesepbig}{{\usefont{U}{webo}{xl}{n}\huge ahb}}
+\newcommand{\bibcovertitlefont}{\parttitlefont\fontsize{28}{32}\selectfont\addfontfeature{LetterSpace=4.5}}
 
 \AtBeginDocument{%
 \hypersetup{%
@@ -93,7 +96,7 @@
 \def\forewordtoc{Предисловие}
 \def\forewordbmk{Предисловие}
 \def\forewordhdr{предисловие}
-\def\urantiabook{ПЯТОЕ ЭПОХАЛЬНОЕ ОТКРОВЕНИЕ}
+\def\urantiabook{КНИГА УРАНТИИ}
 \def\introtxt{Введение}
 \def\papertxt{ТЕКСТ}
 \def\partitxt{ЧАСТЬ I}
