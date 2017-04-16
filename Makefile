@@ -38,14 +38,10 @@ $(MOD).pdf:	tex $(MOD).tex select-book.tex $(TEXFILES)
 		@mkdir -p $(WORKDIR)
 		$(LATEX)
 ifndef DRAFT
-		#mv $(WORKDIR)/$(MOD).pdf $(WORKDIR)/$(MOD)-1.pdf
-		#mv $(WORKDIR)/$(MOD).log $(WORKDIR)/$(MOD)-1.log
 		$(LATEX)
-		#mv $(WORKDIR)/$(MOD).pdf $(WORKDIR)/$(MOD)-2.pdf
-		#mv $(WORKDIR)/$(MOD).log $(WORKDIR)/$(MOD)-2.log
 		$(LATEX)
 endif
-		mv $(WORKDIR)/$(MOD).pdf .
+		@mv $(WORKDIR)/$(MOD).pdf .
 
 select-book.tex:	
 ifeq ($(SUBSET),yes)
