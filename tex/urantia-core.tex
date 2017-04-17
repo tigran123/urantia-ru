@@ -13,8 +13,8 @@
 % 6x9" to fit 4x800 pages.
 \tunemarkup{pgluluhb}{\RequirePackage[dvips,headheight=20pt,headsep=7pt,vmargin={0.6in,0.5in},hmargin={0.8in,0.7in},twoside=true,papersize={6in,9in}]{geometry}}
 
-% Crown Quart for printing in 2 volumes
-\tunemarkup{pgcrownq}{\RequirePackage[dvips,headheight=12.8pt,headsep=2pt,vmargin={0.4in,0.45in},hmargin={0.8in,0.4in},twoside=true,papersize={7.444in,9.681in}]{geometry}}
+% Crown Quarto for printing in 2 volumes
+\tunemarkup{pgcrownq}{\RequirePackage[dvips,headheight=12.8pt,headsep=2pt,vmargin={0.4in},hmargin={0.8in,0.4in},twoside=true,papersize={7.444in,9.681in}]{geometry}}
 
 \tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=19pt,headsep=2pt,vmargin={0.2in,0.15in},hmargin={0.07in},twoside=true,papersize={90.0mm,120.0mm}]{geometry}}
 
@@ -42,7 +42,7 @@
 \newcounter{secnum}
 
 \newcommand{\uforeword}{%
-\newpage\thispagestyle{empty}%
+\tunemarkup{papernewpage}{\newpage}\thispagestyle{empty}%
 \begin{center}
 \headerfont\bibpapertitlefont\forewordup\end{center}%
 \ubookdescr{p0}{
@@ -148,7 +148,7 @@
 }
 
 \newcommand{\upaper}[2]{%
-\newpage\thispagestyle{empty}%
+\tunemarkup{papernewpage}{\newpage}\thispagestyle{empty}%
 \par\vskip1ex\pagebreak[3]%
 \setcounter{paper}{#1}%
 \setcounter{secnum}{0}%
@@ -221,7 +221,7 @@
 \def\pc{{\scriptsize\P}\kern2pt}
 \newcommand{\vsetoff}{\vspace{1ex}}
 \setcounter{DefaultLines}{2}
-\renewcommand{\authorfont}{\fontsize{10.1}{9}\bfseries\itshape}%
+\renewcommand{\authorfont}{\fontsize{9.1}{9}\bfseries\itshape}%
 \definecolor{ubgreen}{rgb}{0.0, 0.0, 0.0}
 \definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
 \definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
@@ -230,13 +230,13 @@
 %\newcommand{\titlesepbig}{{\usefont{U}{webo}{xl}{n}\fontsize{36}{36}\selectfont ahb}}
 \renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=1.2}\fontsize{15}{15}\selectfont}
 \renewcommand{\bibtocfont}{\fontsize{11.5}{14}\selectfont}
-\newcommand{\subfont}{\fontsize{16}{18}\itshape}
+\newcommand{\subfont}{\fontsize{14}{16}\itshape}
 \newcommand{\parttitlefontsize}{\huge}
 \renewcommand{\footnotesize}{\fontsize{12}{14}\selectfont}
-\renewcommand{\bibbookend}{\fontsize{10.7}{11.2}\selectfont}
-\newcommand{\urantiamainfontsize}{10.7/11.2}
-\newcommand{\bibpaperfont}{\fontsize{17}{20}\bfseries}
-\newcommand{\bibpapertitlefont}{\fontsize{21}{22}\bfseries}
+\renewcommand{\bibbookend}{\fontsize{11.0}{12}\selectfont}
+\newcommand{\urantiamainfontsize}{11.0/12}
+\newcommand{\bibpaperfont}{\fontsize{16}{16}\bfseries}
+\newcommand{\bibpapertitlefont}{\fontsize{17}{18}\bfseries}
 \newcommand{\bibsectitlefont}{\fontsize{15}{15}\selectfont}
 \renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=2.5}\fontsize{10}{10}\bfseries}
 \newcommand{\bibheadpapersize}{\fontsize{12.0}{12.0}\selectfont}
@@ -495,7 +495,6 @@
 \renewcommand{\author}[1]{\thispagestyle{empty}\begin{center}\authorfont\textcolor{ubdarkblue}{#1}\end{center}\fancyhead[CE]{\bibheadfont\MakeUppercase{#1}}}
 
 \newcommand{\parti}{%
-\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -503,8 +502,8 @@
 \tunemarkup{pgkindledx}{\huge}%
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
-\tunemarkup{pgcrownq}{\Huge}%
-{\addfontfeature{LetterSpace=8.0}\parttitlefont\partitxt}\\[2ex]
+\tunemarkup{pgcrownq}{\LARGE}%
+{\addfontfeature{LetterSpace=8.0}\parttitlefont\partitxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
 \tunemarkup{pgkindledx}{\LARGE}%
@@ -517,16 +516,12 @@
 \tunemarkup{pgkindledx}{\large}%
 \tunemarkup{pgletter}{\LARGE}%
 \tunemarkup{pgafour}{\LARGE}%
-\tunemarkup{pgcrownq}{\LARGE\itshape}%
-\partisub\\
+\subfont\partisub\\
 \end{center}%
-\vspace*{\stretch{0.5}}\null
 \bibpart{\partiup}{\partitxt\ \partimix}{pt1}%
-\clp
 }
 
 \newcommand{\partii}{%
-\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -534,8 +529,8 @@
 \tunemarkup{pgkindledx}{\huge}%
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
-\tunemarkup{pgcrownq}{\Huge}%
-{\addfontfeature{LetterSpace=8.0}\parttitlefont\partiitxt}\\[2ex]
+\tunemarkup{pgcrownq}{\LARGE}%
+{\addfontfeature{LetterSpace=8.0}\parttitlefont\partiitxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
 \tunemarkup{pgkindledx}{\LARGE}%
@@ -548,16 +543,12 @@
 \tunemarkup{pgkindledx}{\large}%
 \tunemarkup{pgletter}{\LARGE}%
 \tunemarkup{pgafour}{\LARGE}%
-\tunemarkup{pgcrownq}{\LARGE\itshape}%
-\partiisub\\
+\subfont\partiisub\\
 \end{center}%
-\vspace*{\stretch{0.5}}\null
 \bibpart{\partiiup}{\partiitxt\ \partiimix}{pt2}%
-\clp
 }
 
 \newcommand{\partiii}{%
-\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -565,8 +556,8 @@
 \tunemarkup{pgkindledx}{\huge}%
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
-\tunemarkup{pgcrownq}{\Huge}%
-{\addfontfeature{LetterSpace=8.0}\parttitlefont\partiiitxt}\\[2ex]
+\tunemarkup{pgcrownq}{\LARGE}%
+{\addfontfeature{LetterSpace=8.0}\parttitlefont\partiiitxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
 \tunemarkup{pgkindledx}{\LARGE}%
@@ -579,16 +570,12 @@
 \tunemarkup{pgkindledx}{\large}%
 \tunemarkup{pgletter}{\LARGE}%
 \tunemarkup{pgafour}{\LARGE}%
-\tunemarkup{pgcrownq}{\LARGE\itshape}%
-\partiiisub\\
+\subfont\partiiisub\\
 \end{center}%
-\vspace*{\stretch{0.5}}\null
 \bibpart{\partiiiup}{\partiiitxt\ \partiiimix}{pt3}
-\clp
 }
 
 \newcommand{\partiv}{%
-\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -596,8 +583,8 @@
 \tunemarkup{pgkindledx}{\huge}%
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
-\tunemarkup{pgcrownq}{\Huge}%
-{\addfontfeature{LetterSpace=8.0}\parttitlefont\partivtxt}\\[2ex]
+\tunemarkup{pgcrownq}{\LARGE}%
+{\addfontfeature{LetterSpace=8.0}\parttitlefont\partivtxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
 \tunemarkup{pgkindledx}{\LARGE}%
@@ -610,13 +597,11 @@
 \tunemarkup{pgkindledx}{\large}%
 \tunemarkup{pgletter}{\LARGE}%
 \tunemarkup{pgafour}{\LARGE}%
-\tunemarkup{pgcrownq}{\LARGE\itshape}%
+\subfont
 \partivsubone\\[1ex]
 \partivsubtwo\\
 \end{center}%
-\vspace*{\stretch{0.5}}\null
 \bibpart{\partivup}{\partivtxt\ \partivmix}{pt4}
-\clp
 }
 
 % vine leaves
