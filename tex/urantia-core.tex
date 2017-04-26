@@ -16,6 +16,9 @@
 % Crown Quarto for printing in 2 volumes
 \tunemarkup{pgcrownq}{\RequirePackage[dvips,headheight=12.8pt,headsep=2pt,vmargin={0.4in},hmargin={0.8in,0.4in},twoside=true,papersize={7.444in,9.681in}]{geometry}}
 
+% Veligor printing in 1 volumes: 165x235mm
+\tunemarkup{pgveligor}{\RequirePackage[dvips,headheight=12.8pt,headsep=2pt,vmargin={13mm},hmargin={19mm,13mm},twoside=true,papersize={165mm,235mm}]{geometry}}
+
 \tunemarkup{pghanlin}{\RequirePackage[dvips,headheight=19pt,headsep=2pt,vmargin={0.2in,0.15in},hmargin={0.07in},twoside=true,papersize={90.0mm,120.0mm}]{geometry}}
 
 % for typesetting fractions: 1/2, 1/6, etc.
@@ -216,6 +219,37 @@
 \newcommand{\bibexpl}[1]{{\explfont #1}}
 \providecommand{\latintext}{}
 \providecommand{\textlatin}[1]{{#1}}
+
+\tunemarkup{pgveligor}{%
+\def\pc{{\scriptsize\P}\kern2pt}
+\newcommand{\vsetoff}{\vspace{1ex}}
+\setcounter{DefaultLines}{2}
+\renewcommand{\authorfont}{\fontsize{9}{11}\bfseries\itshape}%
+\definecolor{ubgreen}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkred}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubdarkblue}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ublinkcolor}{rgb}{0.0, 0.0, 0.0}
+\definecolor{ubpagecolor}{rgb}{1.0, 1.0, 1.0}
+%\newcommand{\titlesepbig}{{\usefont{U}{webo}{xl}{n}\fontsize{36}{36}\selectfont ahb}}
+\renewcommand{\bibtocheadfont}{\addfontfeature{LetterSpace=1.2}\fontsize{12}{14}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{9.6}{11.5}\selectfont}
+\newcommand{\subfont}{\fontsize{14}{16}\itshape}
+\newcommand{\parttitlefontsize}{\huge}
+\renewcommand{\footnotesize}{\fontsize{12}{14}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{11.0}{12}\selectfont}
+\newcommand{\urantiamainfontsize}{11/12}
+\newcommand{\bibpaperfont}{\fontsize{16}{16}\bfseries}
+\newcommand{\bibpapertitlefont}{\fontsize{17}{18}\bfseries}
+\newcommand{\bibsectitlefont}{\fontsize{15}{15}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\addfontfeature{LetterSpace=2.5}\fontsize{10}{10}\bfseries}
+\newcommand{\bibheadpapersize}{\fontsize{12.0}{12.0}\selectfont}
+\renewcommand{\bibheadchapsize}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibheadversesize}{\fontsize{9}{9}\selectfont}
+\renewcommand{\bibheadpagesize}{\fontsize{10}{10}\selectfont}
+\renewcommand{\bibfnchapsize}{\large\bfseries}
+\renewcommand{\bibfnvssize}{\normalsize\bfseries}
+\newcommand{\bibtocsuperheadfont}{\fontsize{18}{18}\selectfont}
+}
 
 \tunemarkup{pgcrownq}{%
 \def\pc{{\scriptsize\P}\kern2pt}
@@ -492,9 +526,15 @@
 \fancyhead[L]{\bibheadfont\vs@range}
 \fancyhead[R]{\bibheadfont\bibheadpagesize\thepage}
 
+\tunemarkup{pgveligor}{
+\fancyhead[LE,RO]{\bibheadfont\vs@range}
+\fancyhead[RE,LO]{\bibheadfont\bibheadpagesize\thepage}
+}
+
 \renewcommand{\author}[1]{\thispagestyle{empty}\begin{center}\authorfont\textcolor{ubdarkblue}{#1}\end{center}\fancyhead[CE]{\bibheadfont\MakeUppercase{#1}}}
 
 \newcommand{\parti}{%
+\thispagestyle{empty}\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -503,6 +543,7 @@
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
 \tunemarkup{pgcrownq}{\LARGE}%
+\tunemarkup{pgveligor}{\LARGE}%
 {\addfontfeature{LetterSpace=8.0}\parttitlefont\partitxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
@@ -510,6 +551,7 @@
 \tunemarkup{pgletter}{\huge}%
 \tunemarkup{pgafour}{\huge}%
 \tunemarkup{pgcrownq}{\huge}%
+\tunemarkup{pgveligor}{\huge}%
 {\addfontfeature{LetterSpace=6.0}\parttitlefont\scshape\partimix}\\[1ex]
 \tunemarkup{pghanlin}{\fontsize{8}{10}\itshape}%
 \tunemarkup{pgluluhb}{\large}%
@@ -519,9 +561,12 @@
 \subfont\partisub\\
 \end{center}%
 \bibpart{\partiup}{\partitxt\ \partimix}{pt1}%
+\vspace*{\stretch{0.7}}%
+\clp
 }
 
 \newcommand{\partii}{%
+\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -530,6 +575,7 @@
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
 \tunemarkup{pgcrownq}{\LARGE}%
+\tunemarkup{pgveligor}{\LARGE}%
 {\addfontfeature{LetterSpace=8.0}\parttitlefont\partiitxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
@@ -537,6 +583,7 @@
 \tunemarkup{pgletter}{\huge}%
 \tunemarkup{pgafour}{\huge}%
 \tunemarkup{pgcrownq}{\huge}%
+\tunemarkup{pgveligor}{\huge}%
 {\addfontfeature{LetterSpace=8.0}\parttitlefont\scshape\partiimix}\\[1ex]
 \tunemarkup{pghanlin}{\fontsize{8}{10}\itshape}%
 \tunemarkup{pgluluhb}{\large}%
@@ -546,9 +593,12 @@
 \subfont\partiisub\\
 \end{center}%
 \bibpart{\partiiup}{\partiitxt\ \partiimix}{pt2}%
+\vspace*{\stretch{0.7}}%
+\clp
 }
 
 \newcommand{\partiii}{%
+\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -557,6 +607,7 @@
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
 \tunemarkup{pgcrownq}{\LARGE}%
+\tunemarkup{pgveligor}{\LARGE}%
 {\addfontfeature{LetterSpace=8.0}\parttitlefont\partiiitxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
@@ -564,6 +615,7 @@
 \tunemarkup{pgletter}{\huge}%
 \tunemarkup{pgafour}{\huge}%
 \tunemarkup{pgcrownq}{\huge}%
+\tunemarkup{pgveligor}{\huge}%
 {\addfontfeature{LetterSpace=6.0}\parttitlefont\scshape\partiiimix}\\[1ex]
 \tunemarkup{pghanlin}{\fontsize{8}{10}\itshape}%
 \tunemarkup{pgluluhb}{\large}%
@@ -573,9 +625,12 @@
 \subfont\partiiisub\\
 \end{center}%
 \bibpart{\partiiiup}{\partiiitxt\ \partiiimix}{pt3}
+\vspace*{\stretch{0.7}}%
+\clp
 }
 
 \newcommand{\partiv}{%
+\clp
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -584,6 +639,7 @@
 \tunemarkup{pgletter}{\Huge}%
 \tunemarkup{pgafour}{\Huge}%
 \tunemarkup{pgcrownq}{\LARGE}%
+\tunemarkup{pgveligor}{\LARGE}%
 {\addfontfeature{LetterSpace=8.0}\parttitlefont\partivtxt}\\
 \tunemarkup{pghanlin}{\Large}%
 \tunemarkup{pgluluhb}{\Large}%
@@ -591,6 +647,7 @@
 \tunemarkup{pgletter}{\huge}%
 \tunemarkup{pgafour}{\huge}%
 \tunemarkup{pgcrownq}{\huge}%
+\tunemarkup{pgveligor}{\huge}%
 {\addfontfeature{LetterSpace=6.0}\parttitlefont\scshape\partivmix}\\[1ex]
 \tunemarkup{pghanlin}{\fontsize{8}{10}\itshape}%
 \tunemarkup{pgluluhb}{\large}%
@@ -602,6 +659,8 @@
 \partivsubtwo\\
 \end{center}%
 \bibpart{\partivup}{\partivtxt\ \partivmix}{pt4}
+\vspace*{\stretch{0.7}}%
+\clp
 }
 
 % vine leaves
