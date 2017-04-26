@@ -531,10 +531,15 @@
 \fancyhead[RE,LO]{\bibheadfont\bibheadpagesize\thepage}
 }
 
+\tunemarkup{pgcrownq}{
+\fancyhead[LE,RO]{\bibheadfont\vs@range}
+\fancyhead[RE,LO]{\bibheadfont\bibheadpagesize\thepage}
+}
+
 \renewcommand{\author}[1]{\thispagestyle{empty}\begin{center}\authorfont\textcolor{ubdarkblue}{#1}\end{center}\fancyhead[CE]{\bibheadfont\MakeUppercase{#1}}}
 
 \newcommand{\parti}{%
-\thispagestyle{empty}\clp
+\tunemarkup{partnewpage}{\thispagestyle{empty}\clp}
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -562,11 +567,11 @@
 \end{center}%
 \bibpart{\partiup}{\partitxt\ \partimix}{pt1}%
 \vspace*{\stretch{0.7}}%
-\clp
+\tunemarkup{partnewpage}{\clp}
 }
 
 \newcommand{\partii}{%
-\clp
+\tunemarkup{partnewpage}{\clp}
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -594,11 +599,11 @@
 \end{center}%
 \bibpart{\partiiup}{\partiitxt\ \partiimix}{pt2}%
 \vspace*{\stretch{0.7}}%
-\clp
+\tunemarkup{partnewpage}{\clp}
 }
 
 \newcommand{\partiii}{%
-\clp
+\tunemarkup{partnewpage}{\clp}
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -626,11 +631,11 @@
 \end{center}%
 \bibpart{\partiiiup}{\partiiitxt\ \partiiimix}{pt3}
 \vspace*{\stretch{0.7}}%
-\clp
+\tunemarkup{partnewpage}{\clp}
 }
 
 \newcommand{\partiv}{%
-\clp
+\tunemarkup{partnewpage}{\clp}
 \thispagestyle{empty}\vspace*{\stretch{0.2}}%
 \begin{center}%
 \tunemarkup{pghanlin}{\Large}%
@@ -660,7 +665,7 @@
 \end{center}%
 \bibpart{\partivup}{\partivtxt\ \partivmix}{pt4}
 \vspace*{\stretch{0.7}}%
-\clp
+\tunemarkup{partnewpage}{\clp}
 }
 
 % vine leaves
