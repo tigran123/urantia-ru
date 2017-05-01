@@ -31,8 +31,8 @@ do
    file=$(basename $path)
    mkdir -p $dir
    sed -e "s%{{{br}}}%\\\\\\\%g" \
-       -e "s%{i{i{%<em>%g" \
-       -e "s%}i}i}%</em>%g" \
+       -e "s%{i{i{%<i>%g" \
+       -e "s%}i}i}%</i>%g" \
        -e "s%  *% %g" ${INPUT_DIR}/${path} | \
        sed -e "s%%%g" \
            -e "s% $%%g" \
