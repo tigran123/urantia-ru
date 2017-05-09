@@ -95,7 +95,7 @@ do
          else
             if grep -q " $i:$chap.$((verse-1))$" ${PARCLUSTER_FILE}
             then
-               echo -E "<p><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}"><sup>${i}:${chap}.${verse}</sup></a> ¶ ${text}" >> $OUT/p${p}.html
+               echo -E "<p><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}"><sup>${i}:${chap}.${verse}</sup></a> §§ ${text}" >> $OUT/p${p}.html
             else
                echo -E "<p><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}"><sup>${i}:${chap}.${verse}</sup></a> ${text}" >> $OUT/p${p}.html
             fi
