@@ -13,7 +13,7 @@ all::		$(MOD).pdf
 .PHONY:		clean
 
 clean::		
-		@rm -rf $(WORKDIR) select-book.tex missfont.log $(MOD).pdf
+		@rm -rf $(WORKDIR) select-book.tex $(MOD).pdf
 
 $(MOD).pdf:	select-book.tex
 		@mkdir -p $(WORKDIR)
