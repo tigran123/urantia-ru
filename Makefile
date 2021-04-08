@@ -2,10 +2,6 @@
 
 MOD = urantia-ru
 WORKDIR = $(TMPDIR)/$(MOD)
-
-# otherwise makeindex won't work with our choice of WORKDIR
-export openout_any = a
-
 LATEX = xelatex -output-directory=$(WORKDIR) -halt-on-error $(MOD) < /dev/null > /dev/null 2>&1
 
 all::		$(MOD).pdf
