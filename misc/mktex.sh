@@ -21,7 +21,6 @@ fi
 ./convert-tags.sh
 
 rm -rf tex ; mkdir tex
-#for ((i = 10; i <= 10; i++));
 for ((i = 0; i <= 196; i++));
 do
    p=$(printf "%03d" $i)
