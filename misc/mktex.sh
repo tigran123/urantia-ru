@@ -13,6 +13,11 @@ PAPER_AUTHORS=paper-authors.txt
 declare -a parlist lineid linetype
 declare -i sec i paridx linenum
 
+if [ $(dirname $0) != "." ] ; then
+   echo "ERROR: this script can only be executed from the directory it is in"
+   exit 1
+fi
+
 ./convert-tags.sh
 
 rm -rf tex ; mkdir tex
