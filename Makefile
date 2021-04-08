@@ -19,11 +19,8 @@ $(MOD).pdf:	select-book.tex
 		@mkdir -p $(WORKDIR)
 		$(LATEX)
 ifndef DRAFT
-		@if test -f $(WORKDIR)/$(MOD).idx; then makeindex -q $(WORKDIR)/$(MOD); fi
 		$(LATEX)
-		@if test -f $(WORKDIR)/$(MOD).idx; then makeindex -q $(WORKDIR)/$(MOD); fi
 		$(LATEX)
-		@if test -f $(WORKDIR)/$(MOD).idx; then makeindex -q $(WORKDIR)/$(MOD); fi
 endif
 		@mv $(WORKDIR)/$(MOD).pdf .
 
