@@ -43,8 +43,7 @@ do
       echo -E " <ul>" >> $TOC
    fi
    p=$(printf "%03d" $i)
-   parlist=($(sed -ne "s%^/\* Paper${i} \*/  *\[\(.*\)\],*
-%\1%p" ${METRIC_FILE} | sed -e "s%,%%g"))
+   parlist=($(sed -ne "s%^/\* Paper${i} \*/  *\[\(.*\)\],*%\1%p" ${METRIC_FILE} | sed -e "s%,%%g"))
    numsec=${#parlist[@]}
    echo "paper $p: ($numsec sections)"
    linenum=0
