@@ -19,7 +19,7 @@ declare -i sec i paridx linenum
 
 rm -rf $OUT ; mkdir -p $OUT
 echo -E "<ul class='toc' id='toc5'>" > $TOC
-echo -E "<li title='<i>Представлено при содействии Уверсского Отряда личностей сверхвселенной, действующего с разрешения Древних Дней Орвонтона.</i>'><a href=\".U0_0_1\"><b>I: ЦЕНТРАЛЬНАЯ ВСЕЛЕННАЯ И СВЕРХВСЕЛЕННЫЕ</b></a>" >> $TOC
+echo -E "<li title='<i>Представлено при содействии Уверсского Отряда личностей сверхвселенной, действующего с разрешения Древних Дней Орвонтона.</i>'><a href=\".U0_0_1\"><b>I. ЦЕНТРАЛЬНАЯ ВСЕЛЕННАЯ И СВЕРХВСЕЛЕННЫЕ</b></a>" >> $TOC
 echo -E " <ul>" >> $TOC
 
 for ((i = 0; i <= 196; i++));
@@ -27,19 +27,19 @@ do
    if ((i == 32)) ; then
       echo -E " </ul>" >> $TOC
       echo -E "</li>" >> $TOC
-      echo -E "<li title='<i>Представлено при содействии Небадонского Отряда личностей локальной вселенной, действующих с разрешения Гавриила Спасоградского.</i>'><a href=\".U32_0_1\"><b>II: ЛОКАЛЬНАЯ ВСЕЛЕННАЯ</b></a>" >> $TOC
+      echo -E "<li title='<i>Представлено при содействии Небадонского Отряда личностей локальной вселенной, действующих с разрешения Гавриила Спасоградского.</i>'><a href=\".U32_0_1\"><b>II. ЛОКАЛЬНАЯ ВСЕЛЕННАЯ</b></a>" >> $TOC
       echo -E " <ul>" >> $TOC
    fi
    if ((i == 57)) ; then
       echo -E " </ul>" >> $TOC
       echo -E "</li>" >> $TOC
-      echo -E "<li title='<i>Эти тексты были представлены при содействии Отряда личностей локальной вселенной, действующих с разрешения Гавриила Спасоградского</i>'><a href=\".U57_0_1\"><b>III: ИСТОРИЯ УРАНТИИ</b></a>" >> $TOC
+      echo -E "<li title='<i>Эти тексты были представлены при содействии Отряда личностей локальной вселенной, действующих с разрешения Гавриила Спасоградского</i>'><a href=\".U57_0_1\"><b>III. ИСТОРИЯ УРАНТИИ</b></a>" >> $TOC
       echo -E " <ul>" >> $TOC
    fi
    if ((i == 120)) ; then
       echo -E " </ul>" >> $TOC
       echo -E "</li>" >> $TOC
-      echo -E "<li title='<i>Материалы этой части подготовлены комиссией из 12 срединников Урантии, работавшей под началом Мелхиседека, руководителя комиссии по откровениям.<br>Основные данные о событиях сообщены срединником второго рода, который некогда был назначен сверхчеловеческим хранителем апостола Андрея</i>'><a href=\".U120_0_1\"><b>IV: ЖИЗНЬ И УЧЕНИЯ ИИСУСА</b></a>" >> $TOC
+      echo -E "<li title='<i>Материалы этой части подготовлены комиссией из 12 срединников Урантии, работавшей под началом Мелхиседека, руководителя комиссии по откровениям.<br>Основные данные о событиях сообщены срединником второго рода, который некогда был назначен сверхчеловеческим хранителем апостола Андрея</i>'><a href=\".U120_0_1\"><b>IV. ЖИЗНЬ И УЧЕНИЯ ИИСУСА</b></a>" >> $TOC
       echo -E " <ul>" >> $TOC
    fi
    p=$(printf "%03d" $i)
@@ -64,6 +64,22 @@ do
          fi
          if ((i == 139 && sec > 9)) ; then
             lineid[$linenum]="p$p $((sec+1)):${paridx}"
+         elif ((i == 144)); then
+            if ((sec == 5 && paridx >= 11 && paridx <= 23)); then
+               lineid[$linenum]="p$p ${sec}:$((paridx+1))"
+            elif ((sec == 5 && paridx >= 24 && paridx <= 35)); then
+               lineid[$linenum]="p$p ${sec}:$((paridx+2))"
+            elif ((sec == 5 && paridx >= 36 && paridx <= 50)); then
+               lineid[$linenum]="p$p ${sec}:$((paridx+3))"
+            elif ((sec == 5 && paridx >= 51 && paridx <= 68)); then
+               lineid[$linenum]="p$p ${sec}:$((paridx+4))"
+            elif ((sec == 5 && paridx >= 69 && paridx <= 81)); then
+               lineid[$linenum]="p$p ${sec}:$((paridx+5))"
+            elif ((sec == 5 && paridx >= 82)); then
+               lineid[$linenum]="p$p ${sec}:$((paridx+6))"
+            else
+               lineid[$linenum]="p$p ${sec}:${paridx}"
+            fi
          else
             lineid[$linenum]="p$p ${sec}:${paridx}"
          fi
@@ -90,14 +106,29 @@ do
          echo -E "    <ul>" >> $OUT/toc.html
       else
          if [ "${linetype[$linenum]}" = "sectiontitle" ] ; then
-            echo -E "      <li><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}">$text</a></li>" >> $OUT/toc.html
-            echo -E "<h4><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}">$text</a></h4>" >> $OUT/p${p}.html
+            echo -E "      <li><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\">$text</a></li>" >> $OUT/toc.html
+            echo -E "<h4><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\">$text</a></h4>" >> $OUT/p${p}.html
          else
             if grep -q " $i:$chap.$((verse-1))$" ${PARCLUSTER_FILE}
             then
-               echo -E "<p><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}"><sup>${i}:${chap}.${verse}</sup></a> §§ ${text}" >> $OUT/p${p}.html
+               echo -E "<p><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\"><sup>${i}:${chap}.${verse}</sup></a> §§ ${text}" >> $OUT/p${p}.html
             else
-               echo -E "<p><a class="U${i}_${chap}_${verse}" href=".U${i}_${chap}_${verse}"><sup>${i}:${chap}.${verse}</sup></a> ${text}" >> $OUT/p${p}.html
+               echo -E "<p><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\"><sup>${i}:${chap}.${verse}</sup></a> ${text}" >> $OUT/p${p}.html
+               if ((i == 144)); then
+                  if (($chap == "5" && $verse == "10")); then
+                     echo -E "<h4><a class=\"U144_5_11\" href=\".U144_5_11\">***</a></h4>" >> $OUT/p${p}.html
+                  elif (($chap == "5" && $verse == "24")); then
+                     echo -E "<h4><a class=\"U144_5_25\" href=\".U144_5_25\">***</a></h4>" >> $OUT/p${p}.html
+                  elif (($chap == "5" && $verse == "37")); then
+                     echo -E "<h4><a class=\"U144_5_38\" href=\".U144_5_38\">***</a></h4>" >> $OUT/p${p}.html
+                  elif (($chap == "5" && $verse == "53")); then
+                     echo -E "<h4><a class=\"U144_5_54\" href=\".U144_5_54\">***</a></h4>" >> $OUT/p${p}.html
+                  elif (($chap == "5" && $verse == "72")); then
+                     echo -E "<h4><a class=\"U144_5_73\" href=\".U144_5_73\">***</a></h4>" >> $OUT/p${p}.html
+                  elif (($chap == "5" && $verse == "86")); then
+                     echo -E "<h4><a class=\"U144_5_87\" href=\".U144_5_87\">***</a></h4>" >> $OUT/p${p}.html
+                  fi
+               fi
             fi
          fi
       fi
