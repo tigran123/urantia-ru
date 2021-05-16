@@ -96,8 +96,7 @@ do
                 verse=$(echo "${lineid[$linenum]}" | sed -ne "s%p... [0-9][0-9]*:\([0-9][0-9]*\)%\1%p")
                 ((verse--))
                 ntext=$(echo $text | sed -e "s%^\([0-9][0-9]*\)\. %\\\ublistelem{\1.}\\\bibnobreakspace %")
-                if grep -q " $i:$chap.$verse$" ${PARCLUSTER_FILE}
-                then
+                if grep -q " $i:$chap.$verse$" ${PARCLUSTER_FILE} && [[ "$ntext" != *"\ublistelem"* ]] ; then
                    echo -nE "\vs ${lineid[$linenum]} \pc ${ntext}" >> tex/p${p}.tex
                 else
                    echo -nE "\vs ${lineid[$linenum]} ${ntext}" >> tex/p${p}.tex
