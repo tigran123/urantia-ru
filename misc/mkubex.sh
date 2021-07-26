@@ -109,8 +109,7 @@ do
             echo -E "      <li><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\">$text</a></li>" >> $OUT/toc.html
             echo -E "<h4><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\">$text</a></h4>" >> $OUT/p${p}.html
          else
-            if grep -q " $i:$chap.$((verse-1))$" ${PARCLUSTER_FILE}
-            then
+            if grep -q " $i:$chap.$((verse-1))$" ${PARCLUSTER_FILE} && [[ ! "$text" =~ ^[0-9][0-9]*\. ]] ; then
                echo -E "<p><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\"><sup>${i}:${chap}.${verse}</sup></a> §§ ${text}" >> $OUT/p${p}.html
             else
                echo -E "<p><a class=\"U${i}_${chap}_${verse}\" href=\".U${i}_${chap}_${verse}\"><sup>${i}:${chap}.${verse}</sup></a> ${text}" >> $OUT/p${p}.html
