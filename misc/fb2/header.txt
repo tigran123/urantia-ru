@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+ <description>
+  <title-info>
+   <genre>religion</genre>
+   <author>
+    <first-name>Божественный</first-name>
+    <last-name>Советник и др.</last-name>
+    <home-page>https://github.com/tigran123/urantia-ru</home-page>
+   </author>
+   <book-title>Книга Урантии</book-title>
+   <annotation>
+    <p>Урантийские тексты представляют собой Пятое Эпохальное Откровение содержащее самое новое возвещение истины смертным Урантии. Ни одно откровение, кроме достижения небесного Отца в Раю не может претендовать на абсолютную полноту.</p>
+    <p>В этой книге рассмотрены важнейшие понятия Бога и божественности, устройство Вселенной, а также жизнь и учения Иисуса.</p>
+   </annotation>
+   <keywords>Бог, Урантия, Иисус, Библия, Христианство, религия</keywords>
+   <date></date>
+   <coverpage>
+    <image l:href="#cover.jpg"/></coverpage>
+   <lang>ru</lang>
+   <src-lang>en</src-lang>
+   <translator>
+    <first-name>Urantia Society</first-name>
+    <last-name>of Greater New York</last-name>
+   </translator>
+  </title-info>
+  <document-info>
+   <author>
+    <first-name>Тигран</first-name>
+    <middle-name>Араратович</middle-name>
+    <last-name>Айвазян</last-name>
+    <email>aivazian.tigran@gmail.com</email>
+   </author>
+   <date value="2017-05-29">29 May 2017</date>
+   <id>4ef04c5f-bc24-4f49-b362-85e09663a374</id>
+   <version>1.1</version>
+   <history>
+    <p>1.1 (29 мая 2017) Исправил неверные тире во 2-ом документе.</p>
+    <p>1.0 (26 мая 2017) Начальная версия, основанная на exemplar файлах с веб страницы проекта: https://github.com/tigran123/urantia-ru</p>
+   </history>
+  </document-info>
+  <publish-info>
+   <book-name>Книга Урантии</book-name>
+   <city>Лондон</city>
+   <year>2017</year>
+  </publish-info>
+  <custom-info info-type="Издание">1</custom-info>
+ </description>
+ <body>
+  <title><p>КНИГА УРАНТИИ</p></title>
+  <section>
+   <title><p>ЧАСТЬ I</p><p>ЦЕНТРАЛЬНАЯ ВСЕЛЕННАЯ И СВЕРХВСЕЛЕННЫЕ</p></title>
+   <annotation>
+     <subtitle>
+        <emphasis>Представлено при содействии отряда личностей сверхвселенной, находящихся на Уверсе, действующего под руководством Древних Дней Орвонтона.</emphasis>
+     </subtitle>
+   </annotation>
